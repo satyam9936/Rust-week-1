@@ -69,3 +69,36 @@ impl<T: std::ops::Mul<Output = T> + Copy> Rect<T> {
     }
 }
 
+//genric ovr enum
+enum Result<T> {
+    Ok(T),
+    Err
+}
+//traits
+trait Shape {
+    fn area(&self) -> f32;
+}
+
+struct Rect {
+    width: f32,
+    height: f32
+}
+
+impl Shape for Rect {
+    fn area(&self) -> f32 {
+        return self.width * self.height
+	  }
+}
+	 
+fn get_area(shape: impl Shape) -> f32 {
+    return shape.area()
+ }
+ fn get_area_3<T>(shape: T) -> f32
+ where T: Shape 
+{
+     return shape.area()
+}
+
+
+
+
